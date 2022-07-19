@@ -1,0 +1,60 @@
+-- Others:
+
+Multiple Game Support: -- lets you run a script on several different games on one loadstring
+if game.PlaceId == GameIdHere then
+   --script or loadstring here
+   end
+
+--Anti-AFK:
+wait(3)
+local VirtualUser=game:service'VirtualUser'
+game:service('Players').LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+
+--Fly:
+local FlyingKey = Enum.KeyCode.B
+loadstring(game:HttpGet('https://raw.githubusercontent.com/zachisfunny/Fly-Script/main/Script'))()
+
+--Vehicle Fly:
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/zachisfunny/Universal-Vehicle-Fly/main/Script'),true))()
+
+--Chat Logger:
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/zachisfunny/Chat-Logger-For-Roblox/main/Script'),true))()
+
+--Attach to back script:
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/zachisfunny/Attach-to-back-Script/main/Script'),true))()
+
+--Basic ESP:
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/zachisfunny/ROBLOX-ESP/main/Script'),true))()
+
+--NoClip:
+game:GetService('RunService').Stepped:connect(function()
+game.Players.LocalPlayer.Character.Head.CanCollide = false
+game.Players.LocalPlayer.Character.Torso.CanCollide = false
+
+
+
+--Notification:
+wait(1) -- in the () is how long u want it to wait before it pups up, in seconds
+game.StarterGui:SetCore("SendNotification", {
+Title = "this is how"; -- the title (ofc)
+Text = "to make a notification"; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- change the image id to what u want if u want an image, if not, delete this row.
+Duration = 5; -- how long the notification show should in secounds
+})
+
+--Smoothly float to a location / Tween:
+	local New_CFrame = CFrame.new(the cframe)
+
+
+	local ts = game:GetService("TweenService")
+	local uis = game:GetService("UserInputService")
+	local char = game.Players.LocalPlayer.Character
+
+	local part = char.HumanoidRootPart
+	local ti = TweenInfo.new(1, Enum.EasingStyle.Linear)
+	local tp = {CFrame = New_CFrame}
+
+	ts:Create(part, ti, tp):Play()
