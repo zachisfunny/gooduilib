@@ -25,6 +25,7 @@ local Tabs = {
 -- Groupbox and Tabbox inherit the same functions
 -- except Tabboxes you have to call the functions on a tab (Tabbox:AddTab(name))
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
 
 -- Tabboxes are a tiny bit different, but here's a basic example:
 --[[
@@ -36,6 +37,7 @@ local Tab2 = TabBox:AddTab('Tab 2')
 
 -- You can now call AddToggle, etc on the tabs you added to the Tabbox
 ]]
+
 
 -- Groupbox:AddToggle
 -- Arguments: Index, Options
@@ -65,7 +67,7 @@ Toggles.MyToggle:SetValue(false)
 -- Groupbox:AddButton
 -- Arguments: Text, Callback
 
-local MyButton = LeftGroupBox:AddButton('Button', function()
+local MyButton = RightGroupBox:AddButton('Button', function()
     print('You clicked a button!')
 end)
 
@@ -94,7 +96,7 @@ MyButton2:AddTooltip('This is a sub button')
 -- Groupbox:AddLabel
 -- Arguments: Text, DoesWrap
 LeftGroupBox:AddLabel('This is a label')
-LeftGroupBox:AddLabel('This is a label\n\nwhich wraps its text!', true)
+RightGroupBox:AddLabel('This is a label\n\nwhich wraps its text!', true)
 
 -- Groupbox:AddDivider
 -- Arguments: None
@@ -136,7 +138,7 @@ Options.MySlider:SetValue(3)
 
 -- Groupbox:AddInput
 -- Arguments: Idx, Info
-LeftGroupBox:AddInput('MyTextbox', {
+RightGroupBox:AddInput('MyTextbox', {
     Default = 'My textbox!',
     Numeric = false, -- true / false, only allows numbers
     Finished = false, -- true / false, only calls callback when you press enter
@@ -171,7 +173,7 @@ end)
 Options.MyDropdown:SetValue('This')
 
 -- Multi dropdowns
-LeftGroupBox:AddDropdown('MyMultiDropdown', {
+RightGroupBox:AddDropdown('MyMultiDropdown', {
     -- Default is the numeric index (e.g. "This" would be 1 since it if first in the values list)
     -- Default also accepts a string as well
 
@@ -214,7 +216,7 @@ end)
 
 Options.ColorPicker:SetValueRGB(Color3.fromRGB(0, 255, 140))
 
-LeftGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
+RightGroupBox:AddLabel('Keybind'):AddKeyPicker('KeyPicker', {
     -- SyncToggleState only works with toggles. 
     -- It allows you to make a keybind which has its state synced with its parent toggle
 
