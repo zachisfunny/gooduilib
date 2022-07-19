@@ -1,5 +1,10 @@
--- Library functions
--- Sets the watermark visibility
+--[[
+add
+['UI Settings'] = Window:AddTab('UI Settings'),
+to your tabs
+Library functions
+Sets the watermark visibility
+]]
 Library:SetWatermarkVisibility(true)
 
 -- Sets the watermark text
