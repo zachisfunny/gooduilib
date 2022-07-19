@@ -1,0 +1,180 @@
+--New UI:
+local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
+
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet(repo .. 'addons/ThemeManager.lua'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+
+--New Window
+local Window = Library:CreateWindow({
+    -- Set Center to true if you want the menu to appear in the center
+    -- Set AutoShow to true if you want the menu to appear when it is created
+    -- Position and Size are also valid options here
+    -- but you do not need to define them unless you are changing them :)
+
+    Title = 'Example menu',
+    Center = true, 
+    AutoShow = true,
+})
+
+--Label:
+LeftGroupBox:AddLabel('This is a label')
+
+--Divider:
+LeftGroupBox:AddDivider()
+
+--New Tab:
+local Tabs = {
+    -- Creates a new tab titled Main
+    Main = Window:AddTab('Main'), 
+}
+
+--New Left GroupBox:
+local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+
+--New Right GroupBox:
+local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
+
+--New Button
+local name = LeftGroupBox:AddButton('Button', function()
+    print('You clicked a button!')
+end)
+
+name:AddTooltip('This is a button')
+
+--Sub Button:
+local name2 = name:AddButton('Sub button', function()
+    print('You clicked a sub button!')
+end)
+
+name2:AddTooltip('This is a sub button')
+
+--New Toggle
+LeftGroupBox:AddToggle('MyToggle', {
+    Text = 'This is a toggle',
+    Default = false,
+    Tooltip = 'This is a tooltip',
+})
+
+Toggles.name:OnChanged(function()
+
+    print('name changed to:', Toggles.name.Value)
+end)
+
+Toggles.MyToggle:SetValue(false)
+
+LeftGroupBox:AddSlider('name', {
+    Text = 'This is my slider!',
+
+    Default = 0,
+    Min = 0,
+    Max = 5,
+    Rounding = 1,
+
+    Compact = false, -- If set to true, then it will hide the label
+})
+
+local Number = Options.name.Value
+Options.MySlider:OnChanged(function()
+    print('MySlider was changed! New value:', Options.MySlider.Value)
+end)
+
+Options.name:SetValue(3) -- change start value
+
+--New TextBox
+LeftGroupBox:AddInput('name', {
+    Default = 'My textbox!',
+    Numeric = false, -- true / false, only allows numbers
+    Finished = false, -- true / false, only calls callback when you press enter
+
+    Text = 'This is a textbox',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+
+    Placeholder = 'Placeholder text',
+})
+
+
+Options.name:OnChanged(function()
+    print('Text updated. New text:', Options.MyTextbox.Value)
+end)
+
+--New Dropdown
+LeftGroupBox:AddDropdown('name', {
+    Values = { 'This', 'is', 'a', 'dropdown' },
+    Default = 1, -- number index of the value / string
+    Multi = false, -- true / false, allows multiple choices to be selected
+
+    Text = 'A dropdown',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+})
+
+Options.name:OnChanged(function()
+    print('Dropdown got changed. New value:', Options.MyDropdown.Value)
+end)
+
+Options.name:SetValue('This') -- Default option
+
+--New Multi Dropdown
+LeftGroupBox:AddDropdown('name', {
+    Values = { 'This', 'is', 'a', 'dropdown' },
+    Default = 1, 
+    Multi = true, -- true / false, allows multiple choices to be selected
+
+    Text = 'A dropdown',
+    Tooltip = 'This is a tooltip', -- Information shown when you hover over the textbox
+})
+
+Options.name:OnChanged(function()
+    -- print('Dropdown got changed. New value:', )
+    print('Multi dropdown got changed:')
+    for key, value in next, Options.MyMultiDropdown.Value do
+        print(key, value) -- should print something like This, true
+    end
+end)
+
+Options.name:SetValue({ -- default options
+    This = true,
+    is = true,
+})
+
+--New Color Picker
+LeftGroupBox:AddLabel('Color'):AddColorPicker('name', {
+    Default = Color3.new(0, 1, 0), -- Bright green
+    Title = 'Some color', -- Optional. Allows you to have a custom color picker title (when you open it)
+})
+
+Options.name:OnChanged(function()
+    print('Color changed!', Options.ColorPicker.Value)
+end)
+
+Options.name:SetValueRGB(Color3.fromRGB(0, 255, 140))
+
+--New Keybind
+LeftGroupBox:AddLabel('name'):AddKeyPicker('name', {
+    Default = 'MB2', -- String as the name of the keybind (MB1, MB2 for mouse buttons)  
+    SyncToggleState = false, 
+
+    Mode = 'Toggle', -- Modes: Always, Toggle, Hold
+
+    Text = 'Auto lockpick safes', -- Text to display in the keybind menu
+    NoUI = false, -- Set to true if you want to hide from the Keybind menu,
+})
+
+Options.name:OnClick(function()
+    print('name clicked!', Options.name.Value)
+end)
+
+task.spawn(function()
+    while true do
+        wait(1)
+
+        local state = Options.name:GetState()
+        if state then
+            print('name is being held down')
+        end
+
+        if Library.Unloaded then break end
+    end
+end)
+
+Options.name:SetValue({ 'MB2', 'Toggle' }) -- Sets keybind to MB2, mode to Toggle
