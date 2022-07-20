@@ -17,17 +17,18 @@ local Window = Library:CreateWindow({
     AutoShow = true,
 })
 
+--New Tab:
+local Tabs = {
+    -- Creates a new tab titled Main
+    Main = Window:AddTab('Main'), 
+}
+
 --Label:
 LeftGroupBox:AddLabel('This is a label')
 
 --Divider:
 LeftGroupBox:AddDivider()
 
---New Tab:
-local Tabs = {
-    -- Creates a new tab titled Main
-    Main = Window:AddTab('Main'), 
-}
 
 --New Left GroupBox:
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
