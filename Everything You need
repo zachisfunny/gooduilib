@@ -39,7 +39,7 @@ LeftGroupBox:AddDivider()
 
 
 --New Button
-local name = LeftGroupBox:AddButton('Button', function()
+local name = LeftGroupBox:AddButton('name', function()
     print('You clicked a button!')
 end)
 
@@ -53,7 +53,7 @@ end)
 name2:AddTooltip('This is a sub button')
 
 --New Toggle
-LeftGroupBox:AddToggle('MyToggle', {
+LeftGroupBox:AddToggle('name', {
     Text = 'This is a toggle',
     Default = false,
     Tooltip = 'This is a tooltip',
@@ -79,8 +79,8 @@ LeftGroupBox:AddSlider('name', {
 })
 
 local Number = Options.name.Value
-Options.MySlider:OnChanged(function()
-    print('MySlider was changed! New value:', Options.MySlider.Value)
+Options.name:OnChanged(function()
+    print('MySlider was changed! New value:', Options.name.Value)
 end)
 
 Options.name:SetValue(3) -- change start value
@@ -148,7 +148,7 @@ LeftGroupBox:AddLabel('Color'):AddColorPicker('name', {
 })
 
 Options.name:OnChanged(function()
-    print('Color changed!', Options.ColorPicker.Value)
+    print('Color changed!', Options.name.Value)
 end)
 
 Options.name:SetValueRGB(Color3.fromRGB(0, 255, 140))
