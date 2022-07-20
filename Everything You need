@@ -23,6 +23,12 @@ local Tabs = {
     Main = Window:AddTab('Main'), 
 }
 
+--New Left GroupBox:
+local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
+
+--New Right GroupBox:
+local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
+
 --Label:
 LeftGroupBox:AddLabel('This is a label')
 
@@ -30,11 +36,7 @@ LeftGroupBox:AddLabel('This is a label')
 LeftGroupBox:AddDivider()
 
 
---New Left GroupBox:
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
 
---New Right GroupBox:
-local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
 
 --New Button
 local name = LeftGroupBox:AddButton('Button', function()
