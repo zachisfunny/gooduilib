@@ -64,7 +64,7 @@ Toggles.name:OnChanged(function()
     print('name changed to:', Toggles.name.Value)
 end)
 
-Toggles.MyToggle:SetValue(false)
+Toggles.name:SetValue(false)
 
 --New Slider
 LeftGroupBox:AddSlider('name', {
@@ -99,7 +99,7 @@ LeftGroupBox:AddInput('name', {
 
 
 Options.name:OnChanged(function()
-    print('Text updated. New text:', Options.MyTextbox.Value)
+    print('Text updated. New text:', Options.name.Value)
 end)
 
 --New Dropdown
@@ -113,7 +113,7 @@ LeftGroupBox:AddDropdown('name', {
 })
 
 Options.name:OnChanged(function()
-    print('Dropdown got changed. New value:', Options.MyDropdown.Value)
+    print('Dropdown got changed. New value:', Options.name.Value)
 end)
 
 Options.name:SetValue('This') -- Default option
@@ -131,7 +131,7 @@ LeftGroupBox:AddDropdown('name', {
 Options.name:OnChanged(function()
     -- print('Dropdown got changed. New value:', )
     print('Multi dropdown got changed:')
-    for key, value in next, Options.MyMultiDropdown.Value do
+    for key, value in next, Options.name.Value do
         print(key, value) -- should print something like This, true
     end
 end)
