@@ -63,6 +63,7 @@ end)
 
 Toggles.MyToggle:SetValue(false)
 
+--New Slider
 LeftGroupBox:AddSlider('name', {
     Text = 'This is my slider!',
 
