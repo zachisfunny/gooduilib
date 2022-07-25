@@ -1,6 +1,6 @@
 -- Others:
 
-Multiple Game Support: -- lets you run a script on several different games on one loadstring
+--Multiple Game Support: -- lets you run a script on several different games on one loadstring
 if game.PlaceId == GameIdHere then
    --script or loadstring here
    end
