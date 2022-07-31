@@ -29,14 +29,18 @@ local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Groupbox')
 --New Right GroupBox:
 local RightGroupBox = Tabs.Main:AddRightGroupbox('Groupbox')
 
+--New Left Tab Box:
+local TabBox = Tabs.Main:AddLeftTabbox()
+
+--New Tab Box Tab:
+local Tab1 = TabBox:AddTab('Tab 1')
+
+
 --Label:
 LeftGroupBox:AddLabel('This is a label')
 
 --Divider:
 LeftGroupBox:AddDivider()
-
-
-
 
 --New Button
 local name = LeftGroupBox:AddButton('name', function()
